@@ -45,7 +45,7 @@ export default function TestimonialsSection() {
                 ))}
               </div>
 
-              <p className="testimonial-content">{testimonial.content}</p>
+              <p className="testimonial-content">{testimonial.kesan}</p>
             </motion.div>
           ))}
         </div>

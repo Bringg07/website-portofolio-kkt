@@ -17,10 +17,10 @@ const events: Event[] = [
     id: 1,
     title: "Liburan Bersama ke Pantai",
     date: "15 Mei 2026",
-    location: "Pantai Jepara",
+    location: "Pantai Jogja",
     description:
       "Momen bahagia bersama keluarga kecil Tekkom di pantai yang indah.",
-    participants: 45,
+    participants: 14,
   },
   {
     id: 2,
@@ -29,16 +29,16 @@ const events: Event[] = [
     location: "Restoran Gacoan",
     description:
       "Berkumpul, berbagi cerita, dan menikmati waktu bersama keluarga besar.",
-    participants: 60,
+    participants: 14,
   },
   {
     id: 3,
     title: "Foto Keluarga Besar KKT",
     date: "10 Maret 2026",
-    location: "Universitas Negeri Semarang",
+    location: "Universitas Diponegoro",
     description:
       "Dokumentasi kenangan indah bersama KKT di kampus tercinta.",
-    participants: 75,
+    participants: 14,
   },
 ];
 
