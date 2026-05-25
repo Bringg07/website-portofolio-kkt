@@ -5,8 +5,8 @@ import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import PeopleCard from "@/components/PeopleCard";
 import EventSection from "@/components/EventSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import ContactSection from "@/components/ContactSection";
+import MemoryGallery from "@/components/MemoryGallery";
+import GuestBook from "@/components/GuestBook";
 
 export default function Home() {
   return (
@@ -76,12 +76,12 @@ export default function Home() {
         {/* EVENTS */}
         <EventSection />
 
-        {/* TESTIMONIALS */}
-        <TestimonialsSection />
-      </section>
+        {/* MEMORY GALLERY */}
+        <MemoryGallery />
 
-      {/* CONTACT */}
-      <ContactSection />
+        {/* GUEST BOOK */}
+        <GuestBook />
+      </section>
 
       <Footer />
     </>

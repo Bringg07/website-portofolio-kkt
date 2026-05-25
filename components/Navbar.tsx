@@ -24,8 +24,8 @@ export default function Navbar() {
           <a href="#club">Club</a>
           <a href="#people">People</a>
           <a href="#events">Events</a>
-          <a href="#testimonials">Testimoni</a>
-          <a href="#contact">Kontak</a>
+          <a href="#memories">Galeri</a>
+          <a href="#guestbook">Buku Tamu</a>
         </div>
 
         <button
