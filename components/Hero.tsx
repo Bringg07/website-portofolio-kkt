@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import Typed from "typed.js";
 import { useEffect, useRef } from "react";
-import HeroCanvas from "./HeroCanvas";
 
 const FloatingShape = ({ delay, size, top, left }: { delay: number; size: number; top: string; left: string }) => (
   <motion.div
@@ -44,9 +43,6 @@ export default function Hero() {
 
   return (
     <header id="home" role="banner">
-      {/* 3D Canvas Background */}
-      <HeroCanvas />
-
       {/* Animated Gradient Background */}
       <div className="hero-gradient-bg"></div>
 
@@ -130,3 +126,4 @@ export default function Hero() {
     </header>
   );
 }
+
