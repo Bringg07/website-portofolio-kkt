@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
   close: () => void;
@@ -11,9 +11,24 @@ interface Props {
 
 export default function GalleryModal({
   close,
-  images
+  images,
 }: Props) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        if (selectedIndex !== null) {
+          setSelectedIndex(null);
+        } else {
+          close();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [close, selectedIndex]);
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -62,15 +77,6 @@ export default function GalleryModal({
             damping: 30,
           }}
         >
-          <motion.button
-            className="close-btn"
-            onClick={close}
-            whileHover={{ scale: 1.15 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            ✕
-          </motion.button>
-
           <motion.div
             className="gallery-grid"
             variants={containerVariants}
@@ -132,14 +138,6 @@ export default function GalleryModal({
                   height={600}
                   className="lightbox-image-full"
                 />
-                <motion.button
-                  className="lightbox-close"
-                  onClick={() => setSelectedIndex(null)}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  ✕
-                </motion.button>
               </motion.div>
             </motion.div>
           )}

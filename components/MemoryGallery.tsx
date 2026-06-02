@@ -125,15 +125,6 @@ export default function MemoryGallery() {
                 }}
                 onClick={(e) => e.stopPropagation()}
               >
-                <motion.button
-                  className="lightbox-close"
-                  onClick={() => setSelectedImage(null)}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label="Close"
-                >
-                  ✕
-                </motion.button>
                 {galleryPhotos.map((photo) => {
                   if (photo.id === selectedImage) {
                     return (
