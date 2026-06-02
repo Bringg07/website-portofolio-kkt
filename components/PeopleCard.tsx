@@ -6,9 +6,19 @@ import { FaInstagram } from "react-icons/fa";
 import { useState } from "react";
 import { peopleData, Person } from "@/data/people";
 import ProfileModal from "@/components/ProfileModal";
+import { logEvent } from "@/lib/analytics";
 
 export default function PeopleCard() {
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
+
+  const handleViewProfile = (person: Person) => {
+    setSelectedPerson(person);
+    logEvent("view_founder_profile", { name: person.name, role: person.role });
+  };
+
+  const handleCloseProfile = () => {
+    setSelectedPerson(null);
+  };
 
   return (
     <section id="people">
@@ -47,7 +57,7 @@ export default function PeopleCard() {
 
               <div className="people-buttons">
                 <button
-                  onClick={() => setSelectedPerson(person)}
+                  onClick={() => handleViewProfile(person)}
                   className="btn btn-primary"
                   aria-label={`Lihat profil lengkap ${person.name}`}
                 >
@@ -60,6 +70,9 @@ export default function PeopleCard() {
                   rel="noopener noreferrer"
                   className="btn btn-secondary"
                   aria-label={`Kunjungi Instagram ${person.name}`}
+                  onClick={() =>
+                    logEvent("click_founder_instagram", { name: person.name })
+                  }
                 >
                   <FaInstagram />
                 </a>
@@ -70,10 +83,7 @@ export default function PeopleCard() {
       </div>
 
       {/* Profile Modal */}
-      <ProfileModal
-        person={selectedPerson}
-        onClose={() => setSelectedPerson(null)}
-      />
+      <ProfileModal person={selectedPerson} onClose={handleCloseProfile} />
     </section>
   );
 }
