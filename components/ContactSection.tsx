@@ -97,7 +97,7 @@ export default function ContactSection() {
               <FaMapMarkerAlt className="contact-icon" />
               <div>
                 <h4>Lokasi</h4>
-                <p>Universitas Negeri Semarang, Jawa Tengah</p>
+                <p>Universitas Diponegoro, Jawa Tengah</p>
               </div>
             </div>
           </motion.div>
