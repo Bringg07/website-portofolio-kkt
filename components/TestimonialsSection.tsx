@@ -1,17 +1,25 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaQuoteLeft } from "react-icons/fa";
 import { testimonialsData } from "@/data/testimonials";
 
 export default function TestimonialsSection() {
   return (
-    <section id="testimonials" style={{ backgroundColor: "rgba(0,0,0,0.15)" }}>
+    <section id="testimonials">
       <div className="wrapper">
         <div className="section-title">
-          <h2>Testimoni Anggota</h2>
-          <p>Apa kata mereka tentang KKT?</p>
+          <motion.span
+            className="section-tag"
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+          >
+            💬 Testimoni
+          </motion.span>
+          <h2>Apa Kata Mereka?</h2>
+          <p>Kesan dan pesan dari anggota keluarga KKT</p>
         </div>
 
         <div className="testimonials-grid">
@@ -19,33 +27,32 @@ export default function TestimonialsSection() {
             <motion.div
               key={testimonial.id}
               className="testimonial-card"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.12 }}
+              whileHover={{ y: -8 }}
             >
-              <div className="testimonial-header">
-                <Image
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  width={60}
-                  height={60}
-                  className="testimonial-avatar"
-                  loading="lazy"
-                />
+              <div className="testimonial-quote-icon">
+                <FaQuoteLeft />
+              </div>
+
+              <p className="testimonial-content">{testimonial.kesan}</p>
+
+              <div className="testimonial-footer">
+                <div className="testimonial-avatar-placeholder">
+                  {testimonial.name.charAt(0)}
+                </div>
                 <div className="testimonial-info">
                   <h4>{testimonial.name}</h4>
                   <p className="role">{testimonial.role}</p>
                 </div>
+                <div className="stars">
+                  {Array.from({ length: testimonial.rating }).map((_, i) => (
+                    <FaStar key={i} className="star-icon" />
+                  ))}
+                </div>
               </div>
-
-              <div className="stars">
-                {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <FaStar key={i} className="star-icon" />
-                ))}
-              </div>
-
-              <p className="testimonial-content">{testimonial.kesan}</p>
             </motion.div>
           ))}
         </div>
